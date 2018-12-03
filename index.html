@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+
+    <style>
+
+        body {
+            background-image: url("./assets/images/hogwarts.jpg");
+            text-align: center;
+        }
+    
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid" style="text-align: center; color: white; background-color: transparent;">
+            <div class="container">
+                <h1 class="display-4"><strong>Harry Potter Trivia</strong> </h1>
+                <p class="lead">Welcome to the world of wizardry! Let's see how much you really know.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row" id="timer">
+                    <div class="col-md-6" id="show-number"></div>
+                    <div class="col-md-6">
+                        <a type="button" class="btn btn-danger" style="text-align: center;" onclick="myFunction()">Start Over</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" id="questionBox" style="background-color: transparent; color:white;">
+            <div class="card-body">
+                <p id="question1">
+                    <h3>How many sorting houses are there at Hogwarts?</h3>
+                    <button type="button" class="btn btn-light">3</button>
+                    <button type="button" class="btn btn-light">4</button>
+                    <button type="button" class="btn btn-light">5</button>
+                    <button type="button" class="btn btn-light">6</button>
+                </p>
+                <p id="question2">
+                    <h3>Which of these is NOT one of the Unforgivable Curses?</h3>
+                    <button type="button" class="btn btn-light">Cruciatus Curse</button>
+                    <button type="button" class="btn btn-light">Imperius Curse</button>
+                    <button type="button" class="btn btn-light">Sectumsempra</button>
+                    <button type="button" class="btn btn-light">Avada Kedavra</button>
+                </p>
+                <p id="question3">
+                    <h3>Who Guards the entrance to the Gryffindor common room?</h3>
+                    <button type="button" class="btn btn-light">The Grey Lady</button>
+                    <button type="button" class="btn btn-light">The Fat Friar</button>
+                    <button type="button" class="btn btn-light">The Bloody Baron</button>
+                    <button type="button" class="btn btn-light">The Fat Lady</button>
+                </p>
+                <p id="question4">
+                    <h3>A wizard who cannot do magic is known as a:</h3>
+                    <button type="button" class="btn btn-light">Bleaker</button>
+                    <button type="button" class="btn btn-light">Squib</button>
+                    <button type="button" class="btn btn-light">Duddle</button>
+                    <button type="button" class="btn btn-light">Wizont</button>
+                </p>
+                <p id="question5">
+                    <h3>What does Dumbledore tell Harry he sees in the Mirror of Erised?</h3>
+                    <button type="button" class="btn btn-light">He's holding a pair of socks</button>
+                    <button type="button" class="btn btn-light">He defeats Voldemort </button>
+                    <button type="button" class="btn btn-light">He brings Harry's parents back to life</button>
+                    <button type="button" class="btn btn-light">He is a Phoenix </button>
+                </p>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        var number = 30;
+
+        var intervalId;
+
+        $("#resume").on("click", run);
+
+        function run() {
+            intervalId = setInterval(decrement, 1000);
+            event.preventDefault();
+        }
+
+        function decrement() {
+
+            number--;
+
+            $("#show-number").html("<h3>" + "You have " + number + " seconds remaining. " + "</h3>");
+
+            if (number === 0) {
+
+                stop();
+
+                alert("You're out of time!!");
+
+            event.preventDefault();
+            }
+        }
+
+        function stop() {
+
+            clearInterval(intervalId);
+        }
+
+        function myFunction() {
+    location.reload();
+    event.preventDefault();
+  }
+
+        run();
+
+
+    </script>
+</body>
+
+</html>
